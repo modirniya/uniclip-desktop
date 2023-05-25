@@ -28,7 +28,7 @@ public class ResourceHelper {
         return instance;
     }
 
-    public String getString(String key) {
+    public String getString(String key){
         return res.getString(key);
     }
 

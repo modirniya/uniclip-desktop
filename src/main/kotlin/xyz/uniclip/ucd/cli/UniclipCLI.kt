@@ -3,16 +3,19 @@ package xyz.uniclip.ucd.cli
 import xyz.uniclip.ucd.UC_APP_VERSION
 import xyz.uniclip.ucd.cli.commands.Command
 import xyz.uniclip.ucd.cli.commands.copy.CopyCommand
+import xyz.uniclip.ucd.cli.commands.list.ListCommand
+import xyz.uniclip.ucd.cli.commands.paste.PasteCommand
 
 class UniclipCLI {
     fun run(isAttached: Boolean, args: List<String>) {
         if (args.isNotEmpty() && args[0].isNotEmpty()) {
             val command: Command? = when (args[0]) {
                 "copy" -> CopyCommand()
-                else -> {
-                    null
-                }
+                "paste" -> PasteCommand()
+                "list" -> ListCommand()
+                else -> null
             }
+
             command?.execute(args.drop(1))
         } else {
             println("Usage: uniclip-cli <command> [options]")

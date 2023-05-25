@@ -6,8 +6,8 @@ import xyz.uniclip.ucd.model.Record
 object RecordsRepository {
     private val dataSet = FXCollections.observableHashMap<String, Record>()
 
-    fun addRecord(record: Record) {
-        dataSet[record.key] = record
+    fun addRecord(key: String, value: String) {
+        dataSet[key] = Record(key,value)
     }
 
     fun getRecord(key: String): Record? {

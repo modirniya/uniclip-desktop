@@ -5,8 +5,8 @@ import java.time.ZonedDateTime
 class LogHelper {
     companion object {
 
-        fun l(origin: String) {
-            log("LOCATE", origin, "")
+        fun cp(origin: String) {
+            log("CHECK POINT", origin, "")
         }
 
         fun d(origin: String, content: String) {

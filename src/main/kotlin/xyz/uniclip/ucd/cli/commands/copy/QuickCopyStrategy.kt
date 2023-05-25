@@ -1,6 +1,6 @@
 package xyz.uniclip.ucd.cli.commands.copy
 
-import xyz.uniclip.ucd.repository.RecordsRepository
+import xyz.uniclip.ucd.SQLiteHelper
 import xyz.uniclip.ucd.util.ResourceHelper
 import java.awt.Toolkit
 import java.awt.datatransfer.StringSelection
@@ -11,14 +11,14 @@ private const val TAG = "QuickCopyStrategy"
 class QuickCopyStrategy : CopyStrategy {
 
     override fun copy(args: List<String>) {
-        log.l(TAG)
-        log.i(TAG, args[0])
-        val record = RecordsRepository.getRecord(args[0])
-        if (record == null) {
+        log.cp(TAG)
+        // val record = RecordsRepository.getRecord(args[0])
+        val value = SQLiteHelper.getRecord(args[0])
+        if (value == null) {
             println(ResourceHelper.getInstance().getString("record_not_found"))
         } else {
             val clipboard = Toolkit.getDefaultToolkit().systemClipboard
-            val stringSelection = StringSelection(record.value)
+            val stringSelection = StringSelection(value)
             clipboard.setContents(stringSelection, null)
         }
 
