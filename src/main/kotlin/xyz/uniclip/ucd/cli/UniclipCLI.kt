@@ -3,6 +3,7 @@ package xyz.uniclip.ucd.cli
 import xyz.uniclip.ucd.UC_APP_VERSION
 import xyz.uniclip.ucd.cli.commands.Command
 import xyz.uniclip.ucd.cli.commands.copy.CopyCommand
+import xyz.uniclip.ucd.cli.commands.cut.CutCommand
 import xyz.uniclip.ucd.cli.commands.list.ListCommand
 import xyz.uniclip.ucd.cli.commands.paste.PasteCommand
 
@@ -13,9 +14,9 @@ class UniclipCLI {
                 "copy" -> CopyCommand()
                 "paste" -> PasteCommand()
                 "list" -> ListCommand()
+                "cut" -> CutCommand()
                 else -> null
             }
-
             command?.execute(args.drop(1))
         } else {
             println("Usage: uniclip-cli <command> [options]")

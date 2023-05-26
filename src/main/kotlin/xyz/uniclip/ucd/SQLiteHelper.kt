@@ -1,8 +1,12 @@
 package xyz.uniclip.ucd
 
+import xyz.uniclip.ucd.util.ResourceHelper
 import java.sql.Connection
 import java.sql.DriverManager
 import java.sql.SQLException
+import xyz.uniclip.ucd.util.LogHelper as logs
+
+const val TAG = "SQLiteHelper"
 
 object SQLiteHelper {
 
@@ -17,7 +21,7 @@ object SQLiteHelper {
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS records" +
                     " (key VARCHAR(50) PRIMARY KEY, value TEXT NOT NULL)")
         } catch (e: Exception) {
-            println(e.message)
+            logs.e(TAG, e.message.toString())
         }
     }
 
@@ -28,7 +32,7 @@ object SQLiteHelper {
             preparedStatement.setString(2, value)
             preparedStatement.executeUpdate()
         } catch (e: SQLException) {
-            println(e.message)
+            logs.e(TAG, e.message.toString())
         }
 
     }
@@ -42,8 +46,9 @@ object SQLiteHelper {
                 return rs.getString("value")
             }
         } catch (e: SQLException) {
-            println(e.message)
+            logs.e(TAG, e.message.toString())
         }
+        println(ResourceHelper.getInstance().getString("record_not_found"))
         return null
     }
 
@@ -56,7 +61,7 @@ object SQLiteHelper {
                 records[rs.getString("key")] = rs.getString("value")
             }
         } catch (e: SQLException) {
-            println(e.message)
+            logs.e(TAG, e.message.toString())
         }
         return records
     }
@@ -67,7 +72,7 @@ object SQLiteHelper {
             preparedStatement.setString(1, key)
             preparedStatement.executeUpdate()
         } catch (e: SQLException) {
-            println(e.message)
+            logs.e(TAG, e.message.toString())
         }
     }
 }
