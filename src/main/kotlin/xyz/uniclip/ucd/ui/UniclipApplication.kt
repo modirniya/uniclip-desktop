@@ -8,8 +8,8 @@ import javafx.stage.Stage
 class UniclipApplication : Application() {
     override fun start(stage: Stage) {
         val fxmlLoader = FXMLLoader(UniclipApplication::class.java.getResource("/xyz/uniclip/ucd/views/home.fxml"))
-        val scene = Scene(fxmlLoader.load(), 320.0, 240.0)
-        stage.title = "Hello!"
+        val scene = Scene(fxmlLoader.load())
+        stage.title = "Uniclip Desktop UI"
         stage.scene = scene
         stage.show()
     }

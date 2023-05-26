@@ -6,5 +6,7 @@ module xyz.uniclip.ucd {
     requires java.sql;
 
     opens xyz.uniclip.ucd.ui.controller to javafx.fxml;
+    exports xyz.uniclip.ucd.ui.controller;
+    exports xyz.uniclip.ucd.model;
     exports xyz.uniclip.ucd.ui;
 }
